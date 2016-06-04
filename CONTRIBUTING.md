@@ -22,10 +22,10 @@ with this waiver of copyright interest.
 
 ```bash
 # install
-git clone https://github.com/18F/html-proofer-docker.git
-cd html-proofer-docker
-docker build -t html-proofer .
+git clone https://github.com/18F/phantomas-docker.git
+cd phantomas-docker
+docker build -t phantomas .
 
 # run
-docker run html-proofer
+docker run phantomas
 ```

@@ -1,9 +1,12 @@
-FROM ruby:2.3-alpine
+FROM node:6-slim
 
-# https://github.com/gliderlabs/docker-alpine/issues/53#issuecomment-125671731
-RUN apk add --update build-base libxml2-dev libxslt-dev
-RUN gem install nokogiri -- --use-system-libraries
-RUN gem install html-proofer
+RUN apt-get update && \
+    apt-get install -y \
+      # phantomjs
+      # bzip2
+      git
 
-ENTRYPOINT ["htmlproofer"]
+RUN npm install --global git+https://github.com/afeld/phantomas#optional-deps phantomjs-prebuilt@^2.1.5
+
+ENTRYPOINT ["phantomas"]
 CMD ["--help"]
